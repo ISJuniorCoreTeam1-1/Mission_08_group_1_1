@@ -30,12 +30,39 @@ namespace Mission_08_group_1_1.Models
             mb.Entity<Tasks>().HasData(
                 new Tasks
                 {
-                    Task = "Do the dishes",
+                    Task = "Crisis",
                     CategoryId = 1,
+                    DueDate = DateTime.Now,
+                    Quadrant = 1,
+                    Completed = false,
+                    TaskId = 1
+                },
+                new Tasks
+                {
+                    Task = "Recreation",
+                    CategoryId = 1,
+                    DueDate = DateTime.Now,
+                    Quadrant = 2,
+                    Completed = false,
+                    TaskId = 2
+                },
+                new Tasks
+                {
+                    Task = "Interruptions",
+                    CategoryId = 3,
+                    DueDate = DateTime.Now,
+                    Quadrant = 3,
+                    Completed = false,
+                    TaskId = 3
+                },
+                new Tasks
+                {
+                    Task = "Time Wasters",
+                    CategoryId = 3,
                     DueDate = DateTime.Now,
                     Quadrant = 4,
                     Completed = false,
-                    TaskId = 1
+                    TaskId = 4
                 }
             );
         }

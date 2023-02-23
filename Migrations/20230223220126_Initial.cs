@@ -29,7 +29,6 @@ namespace Mission_08_group_1_1.Migrations
                     Task = table.Column<string>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
                     Quadrant = table.Column<int>(nullable: false),
-                    Catergory = table.Column<string>(nullable: true),
                     Completed = table.Column<bool>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
@@ -66,8 +65,23 @@ namespace Mission_08_group_1_1.Migrations
 
             migrationBuilder.InsertData(
                 table: "Tasks",
-                columns: new[] { "TaskId", "CategoryId", "Catergory", "Completed", "DueDate", "Quadrant", "Task" },
-                values: new object[] { 1, 1, null, false, new DateTime(2023, 2, 23, 14, 44, 57, 817, DateTimeKind.Local).AddTicks(718), 4, "Do the dishes" });
+                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
+                values: new object[] { 1, 1, false, new DateTime(2023, 2, 23, 15, 1, 25, 714, DateTimeKind.Local).AddTicks(7189), 1, "Crisis" });
+
+            migrationBuilder.InsertData(
+                table: "Tasks",
+                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
+                values: new object[] { 2, 1, false, new DateTime(2023, 2, 23, 15, 1, 25, 718, DateTimeKind.Local).AddTicks(5316), 2, "Recreation" });
+
+            migrationBuilder.InsertData(
+                table: "Tasks",
+                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
+                values: new object[] { 3, 3, false, new DateTime(2023, 2, 23, 15, 1, 25, 718, DateTimeKind.Local).AddTicks(5412), 3, "Interruptions" });
+
+            migrationBuilder.InsertData(
+                table: "Tasks",
+                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
+                values: new object[] { 4, 3, false, new DateTime(2023, 2, 23, 15, 1, 25, 718, DateTimeKind.Local).AddTicks(5420), 4, "Time Wasters" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tasks_CategoryId",

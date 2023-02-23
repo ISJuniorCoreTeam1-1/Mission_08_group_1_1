@@ -21,8 +21,6 @@ namespace Mission_08_group_1_1.Models
 			[Required]
 			public int Quadrant { get; set; }
 
-			public string Catergory { get; set; }
-
 			public bool Completed { get; set; }
 
 			[Required]

@@ -61,9 +61,6 @@ namespace Mission_08_group_1_1.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Catergory")
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("Completed")
                         .HasColumnType("INTEGER");
 
@@ -89,9 +86,36 @@ namespace Mission_08_group_1_1.Migrations
                             TaskId = 1,
                             CategoryId = 1,
                             Completed = false,
-                            DueDate = new DateTime(2023, 2, 23, 14, 44, 57, 817, DateTimeKind.Local).AddTicks(718),
+                            DueDate = new DateTime(2023, 2, 23, 15, 1, 25, 714, DateTimeKind.Local).AddTicks(7189),
+                            Quadrant = 1,
+                            Task = "Crisis"
+                        },
+                        new
+                        {
+                            TaskId = 2,
+                            CategoryId = 1,
+                            Completed = false,
+                            DueDate = new DateTime(2023, 2, 23, 15, 1, 25, 718, DateTimeKind.Local).AddTicks(5316),
+                            Quadrant = 2,
+                            Task = "Recreation"
+                        },
+                        new
+                        {
+                            TaskId = 3,
+                            CategoryId = 3,
+                            Completed = false,
+                            DueDate = new DateTime(2023, 2, 23, 15, 1, 25, 718, DateTimeKind.Local).AddTicks(5412),
+                            Quadrant = 3,
+                            Task = "Interruptions"
+                        },
+                        new
+                        {
+                            TaskId = 4,
+                            CategoryId = 3,
+                            Completed = false,
+                            DueDate = new DateTime(2023, 2, 23, 15, 1, 25, 718, DateTimeKind.Local).AddTicks(5420),
                             Quadrant = 4,
-                            Task = "Do the dishes"
+                            Task = "Time Wasters"
                         });
                 });
 
