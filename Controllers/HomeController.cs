@@ -28,6 +28,14 @@ namespace Mission_08_group_1_1.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ViewTasks()
+        {
+
+            //Get data from the models
+            return View(); //Will need to pass the data to the view.
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
