@@ -18,6 +18,18 @@ namespace Mission_08_group_1_1.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        public IActionResult ViewTasks()
+        {
+            var todos = contextfile.todo    //Specify context file and table name
+                .Include(x => x.Quadrant)   //Include the other table's data
+                .ToList();
+
+            return View(todos);
+        }
+
+
+
         public IActionResult Index()
         {
             return View();
@@ -26,14 +38,6 @@ namespace Mission_08_group_1_1.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [HttpGet]
-        public IActionResult ViewTasks()
-        {
-
-            //Get data from the models
-            return View(); //Will need to pass the data to the view.
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
