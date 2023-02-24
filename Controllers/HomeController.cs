@@ -63,6 +63,22 @@ namespace Mission_08_group_1_1.Controllers
         }
 
 
+        [HttpPost]
+        public IActionResult DeleteTodo(Tasks TaskToDelete)
+        {
+            TaskContext.Tasks.Remove(TaskToDelete);
+            TaskContext.SaveChanges();
+
+            return RedirectToAction("ViewTasks");
+        }
+
+
+
+
+
+
+
+
         public IActionResult Index()
         {
             return View();
