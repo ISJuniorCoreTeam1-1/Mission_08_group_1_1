@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission_08_group_1_1.Models;
 using System;
@@ -12,8 +13,7 @@ namespace Mission_08_group_1_1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        private TaskContext TaskContext { get; set; }
+        private TaskContext TaskContext { get;set;}
 
         public HomeController(ILogger<HomeController> logger, TaskContext name)
         {
