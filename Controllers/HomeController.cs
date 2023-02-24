@@ -39,7 +39,27 @@ namespace Mission_08_group_1_1.Controllers
         {
             ViewBag.Categories = TaskContext.Category.ToList(); //Pass the categories in as a list to the viewbag
 
-            return ("AddTodo", new Task());
+            return ("AddTodo", new Tasks());
+        }
+
+        [HttpPost]
+        public IActionResult AddTodo(Tasks ar)
+        {
+            if (ModelState.IsValid)
+            {
+                TaskContext.Add(ar);
+                TaskContext.SaveChanges();
+
+                var tasks = TaskContext.Tasks
+                    .Include(x => x.Category) //Include the other table's data
+                    .OrderBy(x => x.DueDate)
+                    .ToList();
+                return ("ViewTasks", tasks);
+            }
+
+            ViewBag.Categories = TaskContext.Categories.ToList();
+
+            return ("AddTodo", ar);
         }
 
 
