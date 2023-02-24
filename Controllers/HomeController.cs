@@ -37,9 +37,9 @@ namespace Mission_08_group_1_1.Controllers
         [HttpGet]
         public IActionResult AddTodo()
         {
-            ViewBag.Categories = TaskContext.Category.ToList(); //Pass the categories in as a list to the viewbag
+            ViewBag.Categories = TaskContext.Catergories.ToList(); //Pass the categories in as a list to the viewbag
 
-            return ("AddTodo", new Tasks());
+            return View("AddTodo", new Tasks());
         }
 
         [HttpPost]
@@ -54,12 +54,12 @@ namespace Mission_08_group_1_1.Controllers
                     .Include(x => x.Category) //Include the other table's data
                     .OrderBy(x => x.DueDate)
                     .ToList();
-                return ("ViewTasks", tasks);
+                return View("ViewTasks", tasks);
             }
 
-            ViewBag.Categories = TaskContext.Categories.ToList();
+            ViewBag.Categories = TaskContext.Catergories.ToList();
 
-            return ("AddTodo", ar);
+            return View("AddTodo", ar);
         }
 
 
