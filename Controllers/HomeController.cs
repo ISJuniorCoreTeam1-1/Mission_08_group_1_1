@@ -22,7 +22,7 @@ namespace Mission_08_group_1_1.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewTasks()
+        public IActionResult ViewTasks() //Where all the tasks are in thier quadrants
         {
 
             //Get data from the models
@@ -34,6 +34,13 @@ namespace Mission_08_group_1_1.Controllers
             return View(tasks);
         }
 
+        [HttpGet]
+        public IActionResult AddTodo()
+        {
+            ViewBag.Categories = TaskContext.Category.ToList(); //Pass the categories in as a list to the viewbag
+
+            return ("AddTodo", new Task());
+        }
 
 
         public IActionResult Index()
