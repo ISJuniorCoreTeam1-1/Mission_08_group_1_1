@@ -72,6 +72,25 @@ namespace Mission_08_group_1_1.Controllers
             return RedirectToAction("ViewTasks");
         }
 
+        [HttpGet]
+        public IActionResult UpdateToDo(int id)
+        {
+            ViewBag.Categories = TaskContext.Catergories.ToList();
+
+            var recordToUpdate = TaskContext.Tasks.Single(x => x.TaskId == id);
+
+            
+            return View(recordToUpdate);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateTodo(Tasks updatedRecord)
+        {
+            TaskContext.Update(updatedRecord);
+            TaskContext.SaveChanges();
+
+            return RedirectToAction("ViewTasks");
+        }
 
 
 
