@@ -21,11 +21,14 @@ namespace Mission_08_group_1_1.Controllers
         [HttpGet]
         public IActionResult ViewTasks()
         {
-            var todos = contextfile.todo    //Specify context file and table name
-                .Include(x => x.Quadrant)   //Include the other table's data
+
+            //Get data from the models
+            var tasks = TaskContext.Tasks //Specify context file and table name
+                .Include(x => x.Category) //Include the other table's data
+                .OrderBy(x => x.DueDate)
                 .ToList();
 
-            return View(todos);
+            return View(tasks);
         }
 
 
