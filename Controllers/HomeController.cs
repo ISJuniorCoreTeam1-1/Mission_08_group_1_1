@@ -13,9 +13,12 @@ namespace Mission_08_group_1_1.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private TaskContext TaskContext { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, TaskContext name)
         {
             _logger = logger;
+            TaskContext = name;
         }
 
         [HttpGet]
