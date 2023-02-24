@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission_08_group_1_1.Models;
@@ -21,6 +21,64 @@ namespace Mission_08_group_1_1.Controllers
             TaskContext = name;
         }
 
+        [HttpGet]
+        public IActionResult ViewTasks() //Where all the tasks are in thier quadrants
+        {
+
+            //Get data from the models
+            var tasks = TaskContext.Tasks //Specify context file and table name
+                .Include(x => x.Category) //Include the other table's data
+                .OrderBy(x => x.DueDate)
+                .ToList();
+
+            return View(tasks);
+        }
+
+        [HttpGet]
+        public IActionResult AddTodo()
+        {
+            ViewBag.Categories = TaskContext.Category.ToList(); //Pass the categories in as a list to the viewbag
+
+            return ("AddTodo", new Tasks());
+        }
+
+        [HttpPost]
+        public IActionResult AddTodo(Tasks ar)
+        {
+            if (ModelState.IsValid)
+            {
+                TaskContext.Add(ar);
+                TaskContext.SaveChanges();
+
+                var tasks = TaskContext.Tasks
+                    .Include(x => x.Category) //Include the other table's data
+                    .OrderBy(x => x.DueDate)
+                    .ToList();
+                return ("ViewTasks", tasks);
+            }
+
+            ViewBag.Categories = TaskContext.Categories.ToList();
+
+            return ("AddTodo", ar);
+        }
+
+
+        [HttpPost]
+        public IActionResult DeleteTodo(Tasks TaskToDelete)
+        {
+            TaskContext.Tasks.Remove(TaskToDelete);
+            TaskContext.SaveChanges();
+
+            return RedirectToAction("ViewTasks");
+        }
+
+
+
+
+
+
+
+
         public IActionResult Index()
         {
             return View();
@@ -29,14 +87,6 @@ namespace Mission_08_group_1_1.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [HttpGet]
-        public IActionResult ViewTasks()
-        {
-
-            //Get data from the models
-            return View(); //Will need to pass the data to the view.
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
