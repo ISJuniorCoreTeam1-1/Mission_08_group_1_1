@@ -72,6 +72,15 @@ namespace Mission_08_group_1_1.Controllers
             return RedirectToAction("ViewTasks");
         }
 
+
+        [HttpPost]
+        public IActionResult DeleteTodo(int id)
+        {
+            var taskToDelete = TaskContext.Tasks.Single(x => x.TaskId == id);
+
+            return View(taskToDelete);
+        }
+
         [HttpGet]
         public IActionResult UpdateToDo(int id)
         {
