@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+@{ 
+    ViewData["Title"] = "Task List";
+}
+
+@model List<Tasks> 
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>Task</td>
+            <td>Due Date</td>
+            <td>Quadrant</td>
+            <td>Completed</td>
+            <td>Task</td>
+            <td>Category</td>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+            {
+        <tr>
+            <td>@x.Task</td>
+            <td>@x.DueDate</td>
+            <td>@x.Quadrant</td>
+            <td>@x.Completed</td>
+            <td>@x.Task</td>
+            <td>@x.Category</td>
+        </tr>
+            }
+
+
+    </tbody>
+
+</table>

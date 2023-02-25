@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <form method="post">
+        <label>Task Name</label><input id="Task" />
+        <br />
+        <label typeof="date">Due Date</label><input id="Date" />
+        <br />
+        <label for="Quadrant">Quadrant:</label>
+        <select name="Quadrant" id="Quadrant">
+            <option value="Q1">Quadrant 1</option>
+            <option value="Q2">Quadrant 2</option>
+            <option value="Q3">Quadrant 3</option>
+            <option value="Q4">Quadrant 4 </option>
+        </select>
+        <br />
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="Home">Home</option>
+            <option value="School">School</option>
+            <option value="Work">Work</option>
+            <option value="Church">Church</option>
+        </select>
+        <br />
+        <label for="Completed">Completed?</label>
+        <select name="completed" id="completed">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <br />
+        <input id="btnSend" type="submit" value="Submit" />
+
+
+    </form>
+</body>
+</html>
