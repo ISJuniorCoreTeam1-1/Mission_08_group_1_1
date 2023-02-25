@@ -13,7 +13,7 @@ namespace Mission_08_group_1_1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private TaskContext TaskContext { get;set;}
+        private TaskContext TaskContext { get; set; }
 
         public HomeController(ILogger<HomeController> logger, TaskContext name)
         {
@@ -88,7 +88,7 @@ namespace Mission_08_group_1_1.Controllers
 
             var recordToUpdate = TaskContext.Tasks.Single(x => x.TaskId == id);
 
-            
+
             return View(recordToUpdate);
         }
 
@@ -121,6 +121,31 @@ namespace Mission_08_group_1_1.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        
+        [HttpGet]
+        public IActionResult Edit(int TaskId)
+        {
+            ViewBag.Categories = TaskContext.Catergories.ToList();
+     
+            var TaskEntry = TaskContext.Tasks.Single(x => x.TaskId == TaskId);
+            return View("TaskEntry", TaskEntry );
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit (Tasks blah)
+        {
+            TaskContext.Update(blah);
+            TaskContext.SaveChanges();
+
+            return RedirectToAction("ViewTasks");
+        }
+        
+
+        public IActionResult Delete()
+        {
+            return View();
         }
     }
 }
