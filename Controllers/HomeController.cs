@@ -28,6 +28,7 @@ namespace Mission_08_group_1_1.Controllers
             //Get data from the models
             var tasks = TaskContext.Tasks //Specify context file and table name
                 .Include(x => x.Category) //Include the other table's data
+                .Where(x => x.Completed != true)    //Only include the incomplete tasks
                 .OrderBy(x => x.DueDate)
                 .ToList();
 
