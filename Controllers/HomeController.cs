@@ -74,7 +74,7 @@ namespace Mission_08_group_1_1.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult DeleteTodo(int id)
         {
             var taskToDelete = TaskContext.Tasks.Single(x => x.TaskId == id);
